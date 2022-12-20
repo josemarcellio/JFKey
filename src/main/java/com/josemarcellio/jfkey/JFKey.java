@@ -33,6 +33,7 @@ public class JFKey extends JavaPlugin {
         configFile = new File(getDataFolder(), "/data/playerdata.yml");
         config = YamlConfiguration.loadConfiguration(configFile);
 
+        saveDefaultConfig();
         loadCommandsFromConfig();
 
         PlayerJoinQuitListener playerJoinQuitListener = new PlayerJoinQuitListener(this, commandMap, config);
@@ -41,7 +42,7 @@ public class JFKey extends JavaPlugin {
         PlayerSwapHandItemsListener playerSwapHandItemsListener = new PlayerSwapHandItemsListener(commandMap);
         getServer().getPluginManager().registerEvents(playerSwapHandItemsListener, this);
 
-        JFKeyCommand jfKeyCommand = new JFKeyCommand(commandMap);
+        JFKeyCommand jfKeyCommand = new JFKeyCommand(commandMap, this);
         getCommand("jfkey").setExecutor(jfKeyCommand);
 
     }
