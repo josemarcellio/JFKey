@@ -1,6 +1,6 @@
-package com.josemarcellio.fkey.listener;
+package com.josemarcellio.jfkey.listener;
 
-import com.josemarcellio.fkey.JFKey;
+import com.josemarcellio.jfkey.JFKey;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

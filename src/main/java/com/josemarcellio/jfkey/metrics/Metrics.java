@@ -1,4 +1,4 @@
-package com.josemarcellio.fkey.metrics;
+package com.josemarcellio.jfkey.metrics;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;

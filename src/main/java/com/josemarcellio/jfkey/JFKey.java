@@ -1,4 +1,4 @@
-package com.josemarcellio.fkey;
+package com.josemarcellio.jfkey;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,10 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import com.josemarcellio.fkey.command.JFKeyCommand;
-import com.josemarcellio.fkey.listener.PlayerJoinQuitListener;
-import com.josemarcellio.fkey.listener.PlayerSwapHandItemsListener;
-import com.josemarcellio.fkey.metrics.Metrics;
+import com.josemarcellio.jfkey.command.JFKeyCommand;
+import com.josemarcellio.jfkey.listener.PlayerJoinQuitListener;
+import com.josemarcellio.jfkey.listener.PlayerSwapHandItemsListener;
+import com.josemarcellio.jfkey.metrics.Metrics;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;

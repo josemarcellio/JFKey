@@ -1,4 +1,4 @@
-package com.josemarcellio.fkey.listener;
+package com.josemarcellio.jfkey.listener;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

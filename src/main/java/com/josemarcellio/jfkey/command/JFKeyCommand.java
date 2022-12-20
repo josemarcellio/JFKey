@@ -1,4 +1,4 @@
-package com.josemarcellio.fkey.command;
+package com.josemarcellio.jfkey.command;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
