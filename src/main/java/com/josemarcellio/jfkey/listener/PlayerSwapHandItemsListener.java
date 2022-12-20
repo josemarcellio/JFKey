@@ -16,10 +16,10 @@ public class PlayerSwapHandItemsListener implements Listener {
 
     @EventHandler
     public void onPlayerSwapHandItems(PlayerSwapHandItemsEvent event) {
-        event.setCancelled(true);
 
         String command = commandMap.get(event.getPlayer().getUniqueId());
         if (command != null) {
+            event.setCancelled(true);
             event.getPlayer().performCommand(command);
         }
     }
