@@ -1,0 +1,8 @@
+name: JFKey
+main: com.josemarcellio.fkey.JFKey
+version: 1.0
+author: JoseMarcellio
+description: Per Player F Key by JoseMarcellio
+commands:
+  jfkey:
+    aliases: fkey
