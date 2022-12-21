@@ -1,3 +1,17 @@
+useMySQL: false
+mysql:
+  address: localhost
+  port: 3306
+  database: jfkey
+  username: root
+  password: password
+  pool-settings:
+    minimum-idle: 10
+    maximum-pool-size: 10
+    maximum-lifetime: 1800000
+    connection-timeout: 30000
+    keepalive-time: 0
+
 messages:
   help: "&7[&3JFKey&7] /jfkey add|clear|reload"
   invalid: "&7[&3JFKey&7] /jfkey add <command>"

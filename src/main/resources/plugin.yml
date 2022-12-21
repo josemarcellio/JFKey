@@ -1,6 +1,6 @@
 name: JFKey
 main: com.josemarcellio.jfkey.JFKey
-version: 1.0
+version: 1.1
 author: JoseMarcellio
 description: Per Player F Key by JoseMarcellio
 commands:
