@@ -1,5 +1,5 @@
-useMySQL: false
 mysql:
+  enabled: false
   address: localhost
   port: 3306
   database: jfkey

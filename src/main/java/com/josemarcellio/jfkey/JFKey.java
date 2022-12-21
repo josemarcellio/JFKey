@@ -40,11 +40,11 @@ public class JFKey extends JavaPlugin {
         configFile = new File(getDataFolder(), "/data/playerdata.yml");
         config = YamlConfiguration.loadConfiguration(configFile);
 
-        useMySQL = getConfig().getBoolean("useMySQL");
+        useMySQL = getConfig().getBoolean("mysql.enabled");
 
         saveDefaultConfig();
 
-        useMySQL = getConfig().getBoolean("useMySQL");
+        useMySQL = getConfig().getBoolean("mysql.enabled");
         if (useMySQL) {
             HikariConfig hikariConfig = new HikariConfig();
             hikariConfig.setJdbcUrl("jdbc:mysql://" + getConfig().getString("mysql.address") + ":" + getConfig().getInt("mysql.port") + "/" + getConfig().getString("mysql.database"));
