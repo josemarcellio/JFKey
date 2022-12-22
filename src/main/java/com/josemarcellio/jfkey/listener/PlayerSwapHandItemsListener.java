@@ -16,7 +16,6 @@ public class PlayerSwapHandItemsListener implements Listener {
 
     @EventHandler
     public void onPlayerSwapHandItems(PlayerSwapHandItemsEvent event) {
-
         String command = commandMap.get(event.getPlayer().getUniqueId());
         if (command != null && !command.equals("no_command_set")) {
             event.setCancelled(true);

@@ -47,22 +47,7 @@ public class JFKey extends JavaPlugin {
 
         useMySQL = getConfig().getBoolean("mysql.enabled");
         if (useMySQL) {
-            HikariConfig hikariConfig = new HikariConfig();
-            hikariConfig.setJdbcUrl("jdbc:mysql://" + getConfig().getString("mysql.address") + ":" + getConfig().getInt("mysql.port") + "/" + getConfig().getString("mysql.database"));
-            hikariConfig.setUsername(getConfig().getString("mysql.username"));
-            hikariConfig.setPassword(getConfig().getString("mysql.password"));
-            hikariConfig.setMinimumIdle(getConfig().getInt("mysql.pool-settings.minimum-idle"));
-            hikariConfig.setMaximumPoolSize(getConfig().getInt("mysql.pool-settings.maximum-pool-size"));
-            hikariConfig.setMaxLifetime(getConfig().getLong("mysql.pool-settings.maximum-lifetime"));
-            hikariConfig.setConnectionTimeout(getConfig().getLong("mysql.pool-settings.connection-timeout"));
-            hikariConfig.setKeepaliveTime(getConfig().getLong("mysql.pool-settings.keepalive-time"));
-            dataSource = new HikariDataSource(hikariConfig);
-            try (Connection conn = dataSource.getConnection()) {
-                PreparedStatement stmt = conn.prepareStatement("CREATE TABLE IF NOT EXISTS josefkey_database (player_id VARCHAR(36) NOT NULL, player_name VARCHAR(255) NOT NULL, command VARCHAR(255) NOT NULL, PRIMARY KEY (player_id))");
-                stmt.executeUpdate();
-            } catch (SQLException e) {
-                getLogger().severe("Error creating josefkey_database table: " + e.getMessage());
-            }
+            setupMySQL();
         } else {
             loadCommandsFromConfig();
         }
@@ -133,6 +118,25 @@ public class JFKey extends JavaPlugin {
             config.save(configFile);
         } catch (IOException e) {
             getLogger().severe("There is an error when trying to save the config: " + e.getMessage());
+        }
+    }
+
+    private void setupMySQL() {
+        HikariConfig hikariConfig = new HikariConfig();
+        hikariConfig.setJdbcUrl("jdbc:mysql://" + getConfig().getString("mysql.address") + ":" + getConfig().getInt("mysql.port") + "/" + getConfig().getString("mysql.database"));
+        hikariConfig.setUsername(getConfig().getString("mysql.username"));
+        hikariConfig.setPassword(getConfig().getString("mysql.password"));
+        hikariConfig.setMinimumIdle(getConfig().getInt("mysql.pool-settings.minimum-idle"));
+        hikariConfig.setMaximumPoolSize(getConfig().getInt("mysql.pool-settings.maximum-pool-size"));
+        hikariConfig.setMaxLifetime(getConfig().getLong("mysql.pool-settings.maximum-lifetime"));
+        hikariConfig.setConnectionTimeout(getConfig().getLong("mysql.pool-settings.connection-timeout"));
+        hikariConfig.setKeepaliveTime(getConfig().getLong("mysql.pool-settings.keepalive-time"));
+        dataSource = new HikariDataSource(hikariConfig);
+        try (Connection conn = dataSource.getConnection()) {
+            PreparedStatement stmt = conn.prepareStatement("CREATE TABLE IF NOT EXISTS josefkey_database (player_id VARCHAR(36) NOT NULL, player_name VARCHAR(255) NOT NULL, command VARCHAR(255) NOT NULL, PRIMARY KEY (player_id))");
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            getLogger().severe("Error creating josefkey_database table: " + e.getMessage());
         }
     }
 }
