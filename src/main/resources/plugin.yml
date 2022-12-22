@@ -1,8 +1,10 @@
 name: JFKey
 main: com.josemarcellio.jfkey.JFKey
-version: 1.1
+version: 1.2
 author: JoseMarcellio
 description: Per Player F Key by JoseMarcellio
+softdepend:
+  - PlaceholderAPI
 commands:
   jfkey:
     aliases: fkey

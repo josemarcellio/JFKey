@@ -13,6 +13,7 @@ import com.josemarcellio.jfkey.command.JFKeyCommand;
 import com.josemarcellio.jfkey.listener.PlayerJoinQuitListener;
 import com.josemarcellio.jfkey.listener.PlayerSwapHandItemsListener;
 import com.josemarcellio.jfkey.metrics.Metrics;
+import com.josemarcellio.jfkey.softdepend.PlaceholderAPIHook;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -66,13 +67,19 @@ public class JFKey extends JavaPlugin {
             loadCommandsFromConfig();
         }
 
+        if (getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+            PlaceholderAPIHook placeholder = new PlaceholderAPIHook(this, commandMap);
+            placeholder.register();
+            getLogger().info("PlaceholderAPI found, hooked JFKey to PlaceholderAPI!");
+        }
+
         PlayerJoinQuitListener playerJoinQuitListener = new PlayerJoinQuitListener(this, commandMap, config);
         getServer().getPluginManager().registerEvents(playerJoinQuitListener, this);
 
         PlayerSwapHandItemsListener playerSwapHandItemsListener = new PlayerSwapHandItemsListener(commandMap);
         getServer().getPluginManager().registerEvents(playerSwapHandItemsListener, this);
 
-        JFKeyCommand jfKeyCommand = new JFKeyCommand(commandMap, this);
+        JFKeyCommand jfKeyCommand = new JFKeyCommand(this, commandMap);
         getCommand("jfkey").setExecutor(jfKeyCommand);
 
     }

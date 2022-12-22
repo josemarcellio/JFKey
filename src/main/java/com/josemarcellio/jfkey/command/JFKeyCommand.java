@@ -13,12 +13,13 @@ import org.bukkit.entity.Player;
 import com.josemarcellio.jfkey.JFKey;
 
 public class JFKeyCommand implements CommandExecutor {
-    private final HashMap<UUID, String> commandMap;
-    private final JFKey plugin;
 
-    public JFKeyCommand(HashMap<UUID, String> commandMap, JFKey plugin) {
-        this.commandMap = commandMap;
+    private final JFKey plugin;
+    private final HashMap<UUID, String> commandMap;
+
+    public JFKeyCommand(JFKey plugin, HashMap<UUID, String> commandMap) {
         this.plugin = plugin;
+        this.commandMap = commandMap;
     }
 
     @Override
