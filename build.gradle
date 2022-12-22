@@ -18,3 +18,14 @@ dependencies {
     implementation 'com.zaxxer:HikariCP:4.0.3'
     compileOnly 'me.clip:placeholderapi:2.11.2'
 }
+
+tasks {
+
+    shadowJar {
+        relocate("com.zaxxer", "com.josemarcellio.jfkey.lib")
+    }
+
+    compileJava {
+        options.encoding = "UTF-8"
+    }
+}
