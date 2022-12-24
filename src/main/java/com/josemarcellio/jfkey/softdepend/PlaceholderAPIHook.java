@@ -44,7 +44,7 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
         if (params.equalsIgnoreCase("command")) {
             return command;
         }
-        return null;
+        return "";
     }
 
 }

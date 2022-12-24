@@ -1,5 +1,5 @@
+storage-method: yaml #yaml, sqlite, mysql
 mysql:
-  enabled: false
   address: localhost
   port: 3306
   database: jfkey

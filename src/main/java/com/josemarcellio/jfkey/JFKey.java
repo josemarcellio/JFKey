@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.UUID;
 import com.josemarcellio.jfkey.api.DatabaseAPI;
 import com.josemarcellio.jfkey.command.JFKeyCommand;
+import com.josemarcellio.jfkey.database.SQLiteDatabase;
 import com.josemarcellio.jfkey.database.YamlDatabase;
 import com.josemarcellio.jfkey.database.MySQLDatabase;
 import com.josemarcellio.jfkey.listener.PlayerJoinQuitListener;
@@ -16,7 +17,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class JFKey extends JavaPlugin {
     private final HashMap<UUID, String> commandMap;
-    public boolean useMySQL;
+
+    public String storageMethod;
 
     private DatabaseAPI databaseAPI;
 
@@ -32,24 +34,29 @@ public class JFKey extends JavaPlugin {
 
         getLogger().info("JFKey by JoseMarcellio");
 
-        useMySQL = getConfig().getBoolean("mysql.enabled");
+        storageMethod = getConfig().getString("storage-method");
 
         saveDefaultConfig();
 
-        useMySQL = getConfig().getBoolean("mysql.enabled");
-        if (useMySQL) {
-            databaseAPI = new MySQLDatabase(this);
-            databaseAPI.setup();
-        } else {
-            databaseAPI = new YamlDatabase(this);
-            databaseAPI.setup();
+        switch (storageMethod.toLowerCase()) {
+            case "mysql":
+                databaseAPI = new MySQLDatabase(this);
+                break;
+            case "sqlite":
+                databaseAPI = new SQLiteDatabase(this);
+                break;
+            case "yaml":
+            default:
+                databaseAPI = new YamlDatabase(this);
+                break;
         }
+        databaseAPI.setup();
 
 
         if (getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
             PlaceholderAPIHook placeholder = new PlaceholderAPIHook(this, commandMap);
             placeholder.register();
-            getLogger().info("PlaceholderAPI found, hooked JFKey to PlaceholderAPI!");
+            getLogger().info("PlaceholderAPI found!, hook into PlaceholderAPI");
         }
 
         PlayerJoinQuitListener playerJoinQuitListener = new PlayerJoinQuitListener(this, commandMap);

@@ -41,7 +41,7 @@ public class YamlDatabase implements DatabaseAPI {
         try {
             config.save(configFile);
         } catch (IOException e) {
-            plugin.getLogger().severe("There is an error when trying to save the config: " + e.getMessage());
+            plugin.getLogger().severe("There is an error when trying to save playerdata: " + e.getMessage());
         }
     }
 }

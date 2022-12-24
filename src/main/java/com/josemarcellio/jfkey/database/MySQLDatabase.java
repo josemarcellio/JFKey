@@ -51,7 +51,7 @@ public class MySQLDatabase implements DatabaseAPI {
             stmt.setString(5, command);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            plugin.getLogger().severe("Error saving player command to MySQL database: " + e.getMessage());
+            plugin.getLogger().severe("Error saving player command to MySQL: " + e.getMessage());
         }
     }
 
@@ -67,7 +67,7 @@ public class MySQLDatabase implements DatabaseAPI {
                 return "no_command_set";
             }
         } catch (SQLException e) {
-            plugin.getLogger().severe("Error loading player command from MySQL database: " + e.getMessage());
+            plugin.getLogger().severe("Error load player command from MySQL: " + e.getMessage());
             return "no_command_set";
         }
     }

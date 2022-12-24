@@ -22,7 +22,11 @@ public class PlayerJoinQuitListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         String command = plugin.getDatabaseAPI().getCommand(player.getUniqueId());
-        commandMap.put(player.getUniqueId(), command);
+        if (command == null) {
+            commandMap.put(player.getUniqueId(), "no_command_set");
+        } else {
+            commandMap.put(player.getUniqueId(), command);
+        }
     }
 
     @EventHandler
