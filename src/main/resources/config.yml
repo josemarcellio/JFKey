@@ -1,5 +1,3 @@
-placeholderAPI: false #It requires a server restart
-
 storage-method: yaml #yaml, sqlite, mysql
 mysql:
   address: localhost
