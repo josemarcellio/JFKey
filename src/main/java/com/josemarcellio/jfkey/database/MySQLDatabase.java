@@ -1,7 +1,7 @@
 package com.josemarcellio.jfkey.database;
 
 import com.josemarcellio.jfkey.JFKey;
-import com.josemarcellio.jfkey.api.DatabaseAPI;
+import com.josemarcellio.jfkey.api.database.DatabaseAPI;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.bukkit.entity.Player;

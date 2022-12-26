@@ -1,4 +1,4 @@
-package com.josemarcellio.jfkey.api;
+package com.josemarcellio.jfkey.api.database;
 
 import org.bukkit.entity.Player;
 

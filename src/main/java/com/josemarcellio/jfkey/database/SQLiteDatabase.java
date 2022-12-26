@@ -1,7 +1,7 @@
 package com.josemarcellio.jfkey.database;
 
 import com.josemarcellio.jfkey.JFKey;
-import com.josemarcellio.jfkey.api.DatabaseAPI;
+import com.josemarcellio.jfkey.api.database.DatabaseAPI;
 import org.bukkit.entity.Player;
 
 import java.util.UUID;

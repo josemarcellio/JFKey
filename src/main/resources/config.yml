@@ -1,3 +1,5 @@
+placeholderAPI: false #It requires a server restart
+
 storage-method: yaml #yaml, sqlite, mysql
 mysql:
   address: localhost
@@ -18,5 +20,5 @@ messages:
   added: "&7[&3JFKey&7] Command added: &f{command}"
   clear: "&7[&3JFKey&7] Command cleared, your last command &f{command}"
   no-command: "&7[&3JFKey&7] &7You haven't set up any command!"
-  no-permission: "&7[&3JFKey&7] &cYou do not have permission to use this command!"
+  no-permission: "&7[&3JFKey&7] &cYou don't have permission: {permission} to use this command!"
   reload: "&7[&3JFKey&7] &aConfig reloaded!"
