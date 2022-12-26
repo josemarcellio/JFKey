@@ -3,7 +3,8 @@ package com.josemarcellio.jfkey;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-import com.josemarcellio.jfkey.api.DatabaseAPI;
+
+import com.josemarcellio.jfkey.api.database.DatabaseAPI;
 import com.josemarcellio.jfkey.command.JFKeyCommand;
 import com.josemarcellio.jfkey.database.SQLiteDatabase;
 import com.josemarcellio.jfkey.database.YamlDatabase;
@@ -56,7 +57,7 @@ public class JFKey extends JavaPlugin {
         if (getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
             PlaceholderAPIHook placeholder = new PlaceholderAPIHook(this, commandMap);
             placeholder.register();
-            getLogger().info("PlaceholderAPI found!, hook into PlaceholderAPI");
+            getLogger().info("PlaceholderAPI found!, hook JFKey into PlaceholderAPI");
         }
 
         PlayerJoinQuitListener playerJoinQuitListener = new PlayerJoinQuitListener(this, commandMap);
