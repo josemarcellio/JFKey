@@ -6,16 +6,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import java.util.HashMap;
-import java.util.UUID;
-
 public class PlayerJoinQuitListener implements Listener {
     private final JFKey plugin;
-    private final HashMap<UUID, String> commandMap;
 
-    public PlayerJoinQuitListener(JFKey plugin, HashMap<UUID, String> commandMap) {
+    public PlayerJoinQuitListener(JFKey plugin) {
         this.plugin = plugin;
-        this.commandMap = commandMap;
     }
 
     @EventHandler
@@ -23,16 +18,16 @@ public class PlayerJoinQuitListener implements Listener {
         Player player = event.getPlayer();
         String command = plugin.getDatabaseAPI().getCommand(player.getUniqueId());
         if (command == null) {
-            commandMap.put(player.getUniqueId(), "no_command_set");
+            plugin.getCommandMap().put(player.getUniqueId(), "no_command_set");
         } else {
-            commandMap.put(player.getUniqueId(), command);
+            plugin.getCommandMap().put(player.getUniqueId(), command);
         }
     }
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        String command = commandMap.get(player.getUniqueId());
+        String command = plugin.getCommandMap().get(player.getUniqueId());
         if (command != null) {
             plugin.getDatabaseAPI().setCommand(player.getUniqueId(), player, command);
         }

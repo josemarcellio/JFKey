@@ -1,8 +1,5 @@
 package com.josemarcellio.jfkey.command.subcommand;
 
-import java.util.HashMap;
-import java.util.UUID;
-
 import com.josemarcellio.jfkey.JFKey;
 import com.josemarcellio.jfkey.api.command.SubCommand;
 import org.bukkit.ChatColor;
@@ -12,11 +9,9 @@ import org.bukkit.entity.Player;
 public class ClearSubCommand extends SubCommand {
 
     private final JFKey plugin;
-    private final HashMap<UUID, String> commandMap;
 
-    public ClearSubCommand(JFKey plugin, HashMap<UUID, String> commandMap) {
+    public ClearSubCommand(JFKey plugin) {
         this.plugin = plugin;
-        this.commandMap = commandMap;
     }
 
     @Override
@@ -39,11 +34,11 @@ public class ClearSubCommand extends SubCommand {
 
         Player player = (Player) sender;
 
-        if (commandMap.get(player.getUniqueId()) != null && !commandMap.get(player.getUniqueId()).equals("no_command_set")) {
-            String lastCommand = commandMap.get(player.getUniqueId());
+        if (plugin.getCommandMap().get(player.getUniqueId()) != null && !plugin.getCommandMap().get(player.getUniqueId()).equals("no_command_set")) {
+            String lastCommand = plugin.getCommandMap().get(player.getUniqueId());
             String messagesClear = plugin.getConfig().getString("messages.clear");
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', messagesClear.replace("{command}", lastCommand)));
-            commandMap.put(player.getUniqueId(), "no_command_set");
+            plugin.getCommandMap().put(player.getUniqueId(), "no_command_set");
         } else {
             String messagesNoCommand = plugin.getConfig().getString("messages.no-command");
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', messagesNoCommand));

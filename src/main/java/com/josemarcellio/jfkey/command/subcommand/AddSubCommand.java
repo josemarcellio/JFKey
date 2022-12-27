@@ -6,17 +6,12 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.HashMap;
-import java.util.UUID;
-
 public class AddSubCommand extends SubCommand {
 
     private final JFKey plugin;
-    private final HashMap<UUID, String> commandMap;
 
-    public AddSubCommand(JFKey plugin, HashMap<UUID, String> commandMap) {
+    public AddSubCommand(JFKey plugin) {
         this.plugin = plugin;
-        this.commandMap = commandMap;
     }
 
     @Override
@@ -49,7 +44,7 @@ public class AddSubCommand extends SubCommand {
             commandToAddBuilder.append(" ").append(args[i]);
         }
         String commandToAdd = commandToAddBuilder.toString();
-        commandMap.put(player.getUniqueId(), commandToAdd);
+        plugin.getCommandMap().put(player.getUniqueId(), commandToAdd);
         String messagesAdded = plugin.getConfig().getString("messages.added");
         player.sendMessage(ChatColor.translateAlternateColorCodes('&', messagesAdded.replace("{command}", commandToAdd)));
     }

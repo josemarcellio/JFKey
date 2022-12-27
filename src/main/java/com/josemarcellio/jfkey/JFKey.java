@@ -55,18 +55,18 @@ public class JFKey extends JavaPlugin {
 
 
         if (getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
-            PlaceholderAPIHook placeholder = new PlaceholderAPIHook(this, commandMap);
+            PlaceholderAPIHook placeholder = new PlaceholderAPIHook(this);
             placeholder.register();
             getLogger().info("PlaceholderAPI found!, hook JFKey into PlaceholderAPI");
         }
 
-        PlayerJoinQuitListener playerJoinQuitListener = new PlayerJoinQuitListener(this, commandMap);
+        PlayerJoinQuitListener playerJoinQuitListener = new PlayerJoinQuitListener(this);
         getServer().getPluginManager().registerEvents(playerJoinQuitListener, this);
 
-        PlayerSwapHandItemsListener playerSwapHandItemsListener = new PlayerSwapHandItemsListener(commandMap);
+        PlayerSwapHandItemsListener playerSwapHandItemsListener = new PlayerSwapHandItemsListener(this);
         getServer().getPluginManager().registerEvents(playerSwapHandItemsListener, this);
 
-        JFKeyCommand jfKeyCommand = new JFKeyCommand(this, commandMap);
+        JFKeyCommand jfKeyCommand = new JFKeyCommand(this);
         getCommand("jfkey").setExecutor(jfKeyCommand);
 
     }
@@ -85,5 +85,9 @@ public class JFKey extends JavaPlugin {
 
     public DatabaseAPI getDatabaseAPI() {
         return databaseAPI;
+    }
+
+    public HashMap<UUID, String> getCommandMap() {
+        return commandMap;
     }
 }

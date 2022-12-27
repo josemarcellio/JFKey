@@ -1,8 +1,5 @@
 package com.josemarcellio.jfkey.command;
 
-import java.util.HashMap;
-import java.util.UUID;
-
 import com.josemarcellio.jfkey.api.command.SubCommand;
 import com.josemarcellio.jfkey.command.subcommand.AddSubCommand;
 import com.josemarcellio.jfkey.command.subcommand.ClearSubCommand;
@@ -18,17 +15,15 @@ import com.josemarcellio.jfkey.JFKey;
 public class JFKeyCommand implements CommandExecutor {
 
     private final JFKey plugin;
-    private final HashMap<UUID, String> commandMap;
 
-    public JFKeyCommand(JFKey plugin, HashMap<UUID, String> commandMap) {
+    public JFKeyCommand(JFKey plugin) {
         this.plugin = plugin;
-        this.commandMap = commandMap;
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        FileConfiguration configuration = this.plugin.getConfig();
+        FileConfiguration configuration = plugin.getConfig();
 
         String messagesHelp = configuration.getString("messages.help");
 
@@ -56,8 +51,8 @@ public class JFKeyCommand implements CommandExecutor {
 
     private SubCommand getSubCommand(String commandName) {
         SubCommand[] subCommands = {
-                new AddSubCommand(plugin, commandMap),
-                new ClearSubCommand(plugin, commandMap),
+                new AddSubCommand(plugin),
+                new ClearSubCommand(plugin),
                 new ReloadSubCommand(plugin)
         };
 
