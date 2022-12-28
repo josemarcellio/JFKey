@@ -25,7 +25,8 @@ public class ClearSubCommand extends SubCommand {
     }
 
     @Override
-    public void execute(CommandSender sender, String[] args) {
+    public void execute(
+            CommandSender sender, String[] args) {
 
         if (!(sender instanceof Player)) {
             sender.sendMessage("Only player can use this command!");

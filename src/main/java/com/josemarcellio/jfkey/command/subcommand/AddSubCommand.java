@@ -8,9 +8,11 @@ import org.bukkit.entity.Player;
 
 public class AddSubCommand extends SubCommand {
 
-    private final JFKey plugin;
+    private final JFKey
+            plugin;
 
-    public AddSubCommand(JFKey plugin) {
+    public AddSubCommand(
+            JFKey plugin) {
         this.plugin = plugin;
     }
 
@@ -25,7 +27,8 @@ public class AddSubCommand extends SubCommand {
     }
 
     @Override
-    public void execute(CommandSender sender, String[] args) {
+    public void execute(
+            CommandSender sender, String[] args) {
 
         if (!(sender instanceof Player)) {
             sender.sendMessage("Only player can use this command!");

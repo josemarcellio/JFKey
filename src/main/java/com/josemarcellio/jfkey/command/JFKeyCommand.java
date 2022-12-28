@@ -12,16 +12,20 @@ import org.bukkit.configuration.file.FileConfiguration;
 
 import com.josemarcellio.jfkey.JFKey;
 
-public class JFKeyCommand implements CommandExecutor {
+public class JFKeyCommand
+        implements CommandExecutor {
 
-    private final JFKey plugin;
+    private final JFKey
+            plugin;
 
-    public JFKeyCommand(JFKey plugin) {
+    public JFKeyCommand(
+            JFKey plugin) {
         this.plugin = plugin;
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(
+            CommandSender sender, Command command, String label, String[] args) {
 
         FileConfiguration configuration = plugin.getConfig();
 

@@ -6,6 +6,8 @@ import java.util.UUID;
 
 public interface DatabaseAPI {
     void setup();
-    void setCommand(UUID playerId, Player player, String command);
-    String getCommand(UUID playerId);
+    void setCommand(
+            UUID playerId, Player player, String command);
+    String getCommand(
+            UUID playerId);
 }

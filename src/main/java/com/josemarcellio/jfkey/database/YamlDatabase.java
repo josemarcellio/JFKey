@@ -9,13 +9,18 @@ import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
-public class YamlDatabase implements DatabaseAPI {
+public class YamlDatabase
+        implements DatabaseAPI {
 
-    private final JFKey plugin;
-    private File configFile;
-    private YamlConfiguration config;
+    private final JFKey
+            plugin;
+    private File
+            configFile;
+    private YamlConfiguration
+            config;
 
-    public YamlDatabase(JFKey plugin) {
+    public YamlDatabase(
+            JFKey plugin) {
         this.plugin = plugin;
     }
 

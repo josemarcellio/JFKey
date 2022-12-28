@@ -5,11 +5,14 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerSwapHandItemsEvent;
 
-public class PlayerSwapHandItemsListener implements Listener {
+public class PlayerSwapHandItemsListener
+        implements Listener {
 
-    private final JFKey plugin;
+    private final JFKey
+            plugin;
 
-    public PlayerSwapHandItemsListener(JFKey plugin) {
+    public PlayerSwapHandItemsListener(
+            JFKey plugin) {
         this.plugin = plugin;
     }
 

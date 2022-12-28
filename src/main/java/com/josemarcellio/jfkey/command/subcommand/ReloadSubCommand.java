@@ -5,11 +5,14 @@ import com.josemarcellio.jfkey.api.command.SubCommand;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
-public class ReloadSubCommand extends SubCommand {
+public class ReloadSubCommand
+        extends SubCommand {
 
-    private final JFKey plugin;
+    private final JFKey
+            plugin;
 
-    public ReloadSubCommand(JFKey plugin) {
+    public ReloadSubCommand(
+            JFKey plugin) {
         this.plugin = plugin;
     }
 
@@ -24,7 +27,8 @@ public class ReloadSubCommand extends SubCommand {
     }
 
     @Override
-    public void execute(CommandSender sender, String[] args) {
+    public void execute(
+            CommandSender sender, String[] args) {
 
         plugin.reloadConfig();
         String messagesReload = plugin.getConfig()

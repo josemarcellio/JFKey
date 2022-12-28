@@ -6,9 +6,11 @@ import org.bukkit.OfflinePlayer;
 
 public class PlaceholderAPIHook extends PlaceholderExpansion {
 
-    private final JFKey plugin;
+    private final JFKey
+            plugin;
 
-    public PlaceholderAPIHook(JFKey plugin) {
+    public PlaceholderAPIHook(
+            JFKey plugin) {
         this.plugin = plugin;
     }
 

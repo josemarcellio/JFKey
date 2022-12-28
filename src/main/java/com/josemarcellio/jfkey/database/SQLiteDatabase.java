@@ -10,9 +10,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-public class SQLiteDatabase implements DatabaseAPI {
-    private final JFKey plugin;
-    public SQLiteDatabase(JFKey plugin) {
+public class SQLiteDatabase
+        implements DatabaseAPI {
+    private final JFKey
+            plugin;
+    public SQLiteDatabase(
+            JFKey plugin) {
         this.plugin = plugin;
     }
 
@@ -34,15 +37,16 @@ public class SQLiteDatabase implements DatabaseAPI {
     public void setCommand(UUID playerId, Player player, String command) {
         try (Connection conn = getConnection()) {
             PreparedStatement stmt = conn.prepareStatement(
-                    "INSERT OR REPLACE INTO josefkey_database (player_id, " +
-                            "player_name, command) VALUES (?, ?, ?)");
+                    "INSERT OR REPLACE INTO josefkey_database " +
+                            "(player_id, player_name, command) VALUES (?, ?, ?)");
             stmt.setString(1, playerId.toString());
             stmt.setString(2, player.getName());
             stmt.setString(3, command);
             stmt.executeUpdate();
         } catch (SQLException e) {
             plugin.getLogger().severe(
-                    "Error saving player command to SQLite: " + e.getMessage());
+                    "Error saving player command to SQLite: "
+                            + e.getMessage());
         }
     }
 
@@ -50,7 +54,8 @@ public class SQLiteDatabase implements DatabaseAPI {
     public String getCommand(UUID playerId) {
         try (Connection conn = getConnection()) {
             PreparedStatement stmt = conn.prepareStatement(
-                    "SELECT command FROM josefkey_database WHERE player_id = ?");
+                    "SELECT command FROM josefkey_database " +
+                            "WHERE player_id = ?");
             stmt.setString(1, playerId.toString());
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
@@ -60,7 +65,8 @@ public class SQLiteDatabase implements DatabaseAPI {
             }
         } catch (SQLException e) {
             plugin.getLogger().severe(
-                    "Error load player command from SQLite: " + e.getMessage());
+                    "Error load player command from SQLite: "
+                            + e.getMessage());
             return null;
         }
     }
