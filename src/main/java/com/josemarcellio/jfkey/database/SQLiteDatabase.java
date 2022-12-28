@@ -36,7 +36,9 @@ public class SQLiteDatabase
     }
 
     @Override
-    public void setCommand(UUID playerId, Player player, String command) {
+    public void setCommand(
+            UUID playerId, Player player, String command) {
+
         try (Connection conn = getConnection()) {
             PreparedStatement stmt = conn.prepareStatement(
                     "INSERT OR REPLACE INTO josefkey_database " +

@@ -11,5 +11,6 @@ public abstract class SubCommand {
     String getPermission();
 
     public abstract
-    void execute(CommandSender sender, String[] args);
+    void execute(
+            CommandSender sender, String[] args);
 }

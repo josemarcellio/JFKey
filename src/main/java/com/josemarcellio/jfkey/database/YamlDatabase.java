@@ -21,6 +21,21 @@ public class YamlDatabase
         this.plugin = plugin;
     }
 
+
+    @Override
+    public void setCommand(
+            UUID playerId, Player player, String command) {
+
+        config.set(playerId + ".name", player.getName());
+        config.set(playerId + ".command", command);
+        try {
+            config.save(configFile);
+        } catch (IOException e) {
+            plugin.getLogger().severe(
+                    "Error saving player command to Yaml: " + e.getMessage());
+        }
+    }
+
     @Override
     public void setup() {
         configFile = new File(plugin.getDataFolder(),
@@ -36,18 +51,6 @@ public class YamlDatabase
             return command;
         } else {
             return "no_command_set";
-        }
-    }
-
-    @Override
-    public void setCommand(UUID playerId, Player player, String command) {
-        config.set(playerId + ".name", player.getName());
-        config.set(playerId + ".command", command);
-        try {
-            config.save(configFile);
-        } catch (IOException e) {
-            plugin.getLogger().severe(
-                    "Error saving player command to Yaml: " + e.getMessage());
         }
     }
 }

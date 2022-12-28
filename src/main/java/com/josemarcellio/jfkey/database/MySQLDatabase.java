@@ -67,7 +67,9 @@ public class MySQLDatabase
     }
 
     @Override
-    public void setCommand(UUID playerId, Player player, String command) {
+    public void setCommand(
+            UUID playerId, Player player, String command) {
+
         try (Connection conn = dataSource.getConnection()) {
             PreparedStatement stmt = conn.prepareStatement(
                     "INSERT INTO josefkey_database (player_id, player_name, " +
