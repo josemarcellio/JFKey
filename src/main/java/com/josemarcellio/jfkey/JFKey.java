@@ -71,8 +71,8 @@ public class JFKey extends JavaPlugin {
         getServer().getPluginManager().registerEvents(
                 playerSwapHandItemsListener, this);
 
-        JFKeyCommand jfKeyCommand
-                = new JFKeyCommand(this);
+        JFKeyCommand jfKeyCommand =
+                new JFKeyCommand(this);
         getCommand("jfkey").setExecutor(jfKeyCommand);
 
     }
