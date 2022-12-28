@@ -12,12 +12,9 @@ import java.util.UUID;
 public class YamlDatabase
         implements DatabaseAPI {
 
-    private final JFKey
-            plugin;
-    private File
-            configFile;
-    private YamlConfiguration
-            config;
+    private final JFKey plugin;
+    private File configFile;
+    private YamlConfiguration config;
 
     public YamlDatabase(
             JFKey plugin) {

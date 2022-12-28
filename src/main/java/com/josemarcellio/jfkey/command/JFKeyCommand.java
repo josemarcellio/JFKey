@@ -25,7 +25,8 @@ public class JFKeyCommand
 
     @Override
     public boolean onCommand(
-            CommandSender sender, Command command, String label, String[] args) {
+            CommandSender sender, Command command, String label,
+            String[] args) {
 
         FileConfiguration configuration = plugin.getConfig();
 

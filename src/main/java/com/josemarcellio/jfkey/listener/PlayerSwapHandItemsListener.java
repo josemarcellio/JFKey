@@ -8,8 +8,7 @@ import org.bukkit.event.player.PlayerSwapHandItemsEvent;
 public class PlayerSwapHandItemsListener
         implements Listener {
 
-    private final JFKey
-            plugin;
+    private final JFKey plugin;
 
     public PlayerSwapHandItemsListener(
             JFKey plugin) {
@@ -17,7 +16,9 @@ public class PlayerSwapHandItemsListener
     }
 
     @EventHandler
-    public void onPlayerSwapHandItems(PlayerSwapHandItemsEvent event) {
+    public void onPlayerSwapHandItems(
+            PlayerSwapHandItemsEvent event) {
+
         String command = plugin.getCommandMap()
                 .get(event.getPlayer().getUniqueId());
 

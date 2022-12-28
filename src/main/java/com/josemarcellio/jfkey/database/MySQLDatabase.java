@@ -15,10 +15,8 @@ import java.util.UUID;
 public class MySQLDatabase
         implements DatabaseAPI {
 
-    private final JFKey
-            plugin;
-    private HikariDataSource
-            dataSource;
+    private final JFKey plugin;
+    private HikariDataSource dataSource;
 
     public MySQLDatabase(
             JFKey plugin) {
@@ -57,9 +55,10 @@ public class MySQLDatabase
         dataSource = new HikariDataSource(hikariConfig);
         try (Connection conn = dataSource.getConnection()) {
             PreparedStatement stmt = conn.prepareStatement(
-                    "CREATE TABLE IF NOT EXISTS josefkey_database (player_id " +
-                            "VARCHAR(36) NOT NULL, player_name VARCHAR(255) NOT NULL, " +
-                            "command VARCHAR(255) NOT NULL, PRIMARY KEY (player_id))");
+                    "CREATE TABLE IF NOT EXISTS josefkey_database " +
+                            "(player_id VARCHAR(36) NOT NULL, player_name " +
+                            "VARCHAR(255) NOT NULL, command VARCHAR(255) NOT " +
+                            "NULL, PRIMARY KEY (player_id))");
             stmt.executeUpdate();
         } catch (SQLException e) {
             plugin.getLogger().severe(

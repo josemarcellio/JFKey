@@ -8,8 +8,7 @@ import org.bukkit.command.CommandSender;
 public class ReloadSubCommand
         extends SubCommand {
 
-    private final JFKey
-            plugin;
+    private final JFKey plugin;
 
     public ReloadSubCommand(
             JFKey plugin) {

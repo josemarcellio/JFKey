@@ -12,8 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 public class SQLiteDatabase
         implements DatabaseAPI {
-    private final JFKey
-            plugin;
+    private final JFKey plugin;
+
     public SQLiteDatabase(
             JFKey plugin) {
         this.plugin = plugin;
@@ -23,8 +23,10 @@ public class SQLiteDatabase
     public void setup() {
         try (Connection conn = getConnection()) {
             PreparedStatement stmt = conn.prepareStatement(
-                    "CREATE TABLE IF NOT EXISTS josefkey_database (player_id " +
-                            "TEXT PRIMARY KEY, player_name TEXT, command TEXT)");
+                    "CREATE TABLE IF NOT EXISTS josefkey_database (" +
+                            "player_id TEXT PRIMARY KEY, " +
+                            "player_name TEXT, " +
+                            "command TEXT)");
             stmt.executeUpdate();
         } catch (SQLException e) {
 
@@ -38,7 +40,8 @@ public class SQLiteDatabase
         try (Connection conn = getConnection()) {
             PreparedStatement stmt = conn.prepareStatement(
                     "INSERT OR REPLACE INTO josefkey_database " +
-                            "(player_id, player_name, command) VALUES (?, ?, ?)");
+                            "(player_id, player_name, command) VALUES " +
+                            "(?, ?, ?)");
             stmt.setString(1, playerId.toString());
             stmt.setString(2, player.getName());
             stmt.setString(3, command);
@@ -54,7 +57,8 @@ public class SQLiteDatabase
     public String getCommand(UUID playerId) {
         try (Connection conn = getConnection()) {
             PreparedStatement stmt = conn.prepareStatement(
-                    "SELECT command FROM josefkey_database " +
+                    "SELECT command " +
+                            "FROM josefkey_database " +
                             "WHERE player_id = ?");
             stmt.setString(1, playerId.toString());
             ResultSet rs = stmt.executeQuery();

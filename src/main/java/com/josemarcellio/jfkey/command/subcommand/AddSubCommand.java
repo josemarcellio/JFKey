@@ -8,8 +8,7 @@ import org.bukkit.entity.Player;
 
 public class AddSubCommand extends SubCommand {
 
-    private final JFKey
-            plugin;
+    private final JFKey plugin;
 
     public AddSubCommand(
             JFKey plugin) {

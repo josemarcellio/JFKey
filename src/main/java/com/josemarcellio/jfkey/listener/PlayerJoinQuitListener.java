@@ -8,8 +8,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 public class PlayerJoinQuitListener
         implements Listener {
-    private final JFKey
-            plugin;
+    private final JFKey plugin;
 
     public PlayerJoinQuitListener(
             JFKey plugin) {
@@ -17,7 +16,9 @@ public class PlayerJoinQuitListener
     }
 
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event) {
+    public void onPlayerJoin(
+            PlayerJoinEvent event) {
+
         Player player = event.getPlayer();
         String command = plugin.getDatabaseAPI()
                 .getCommand(player.getUniqueId());
@@ -31,7 +32,9 @@ public class PlayerJoinQuitListener
     }
 
     @EventHandler
-    public void onPlayerQuit(PlayerQuitEvent event) {
+    public void onPlayerQuit(
+            PlayerQuitEvent event) {
+
         Player player = event.getPlayer();
         String command = plugin.getCommandMap()
                 .get(player.getUniqueId());
