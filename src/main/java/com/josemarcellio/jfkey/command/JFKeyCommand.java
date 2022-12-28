@@ -15,8 +15,7 @@ import com.josemarcellio.jfkey.JFKey;
 public class JFKeyCommand
         implements CommandExecutor {
 
-    private final JFKey
-            plugin;
+    private final JFKey plugin;
 
     public JFKeyCommand(
             JFKey plugin) {
