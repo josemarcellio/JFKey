@@ -15,7 +15,9 @@ public class PlayerSwapHandItemsListener implements Listener {
 
     @EventHandler
     public void onPlayerSwapHandItems(PlayerSwapHandItemsEvent event) {
-        String command = plugin.getCommandMap().get(event.getPlayer().getUniqueId());
+        String command = plugin.getCommandMap()
+                .get(event.getPlayer().getUniqueId());
+
         if (command != null && !command.equals("no_command_set")) {
             event.setCancelled(true);
             event.getPlayer().performCommand(command);

@@ -34,8 +34,12 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
 
     @Override
     public String onRequest(OfflinePlayer player, String params) {
-        String command = plugin.getCommandMap().get(player.getUniqueId());
-        command = command.replace("no_command_set", "");
+        String command = plugin.getCommandMap()
+                .get(player.getUniqueId());
+
+        command = command.replace(
+                "no_command_set", "");
+
         if (params.equalsIgnoreCase("command")) {
             return command;
         }

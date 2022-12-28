@@ -16,20 +16,26 @@ public class PlayerJoinQuitListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        String command = plugin.getDatabaseAPI().getCommand(player.getUniqueId());
+        String command = plugin.getDatabaseAPI()
+                .getCommand(player.getUniqueId());
         if (command == null) {
-            plugin.getCommandMap().put(player.getUniqueId(), "no_command_set");
+            plugin.getCommandMap().put(
+                    player.getUniqueId(), "no_command_set");
         } else {
-            plugin.getCommandMap().put(player.getUniqueId(), command);
+            plugin.getCommandMap().put(
+                    player.getUniqueId(), command);
         }
     }
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        String command = plugin.getCommandMap().get(player.getUniqueId());
+        String command = plugin.getCommandMap()
+                .get(player.getUniqueId());
+
         if (command != null) {
-            plugin.getDatabaseAPI().setCommand(player.getUniqueId(), player, command);
+            plugin.getDatabaseAPI().setCommand(
+                    player.getUniqueId(), player, command);
         }
     }
 }

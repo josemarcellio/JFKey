@@ -35,7 +35,8 @@ public class JFKey extends JavaPlugin {
 
         getLogger().info("JFKey by JoseMarcellio");
 
-        storageMethod = getConfig().getString("storage-method");
+        storageMethod = getConfig()
+                .getString("storage-method");
 
         saveDefaultConfig();
 
@@ -54,17 +55,24 @@ public class JFKey extends JavaPlugin {
         databaseAPI.setup();
 
 
-        if (getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
-            PlaceholderAPIHook placeholder = new PlaceholderAPIHook(this);
+        if (getServer().getPluginManager()
+                .isPluginEnabled("PlaceholderAPI")) {
+            PlaceholderAPIHook placeholder =
+                    new PlaceholderAPIHook(this);
             placeholder.register();
-            getLogger().info("PlaceholderAPI found!, hook JFKey into PlaceholderAPI");
+            getLogger().info(
+                    "PlaceholderAPI found!, hook JFKey into PlaceholderAPI");
         }
 
-        PlayerJoinQuitListener playerJoinQuitListener = new PlayerJoinQuitListener(this);
-        getServer().getPluginManager().registerEvents(playerJoinQuitListener, this);
+        PlayerJoinQuitListener playerJoinQuitListener =
+                new PlayerJoinQuitListener(this);
+        getServer().getPluginManager().registerEvents(
+                playerJoinQuitListener, this);
 
-        PlayerSwapHandItemsListener playerSwapHandItemsListener = new PlayerSwapHandItemsListener(this);
-        getServer().getPluginManager().registerEvents(playerSwapHandItemsListener, this);
+        PlayerSwapHandItemsListener playerSwapHandItemsListener =
+                new PlayerSwapHandItemsListener(this);
+        getServer().getPluginManager().registerEvents(
+                playerSwapHandItemsListener, this);
 
         JFKeyCommand jfKeyCommand = new JFKeyCommand(this);
         getCommand("jfkey").setExecutor(jfKeyCommand);
@@ -78,7 +86,8 @@ public class JFKey extends JavaPlugin {
             String command = entry.getValue();
             Player player = getServer().getPlayer(playerId);
             if (player != null) {
-                this.getDatabaseAPI().setCommand(player.getUniqueId(), player, command);
+                getDatabaseAPI().setCommand(
+                        player.getUniqueId(), player, command);
             }
         }
     }

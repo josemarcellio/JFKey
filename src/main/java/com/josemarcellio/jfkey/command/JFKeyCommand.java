@@ -25,23 +25,35 @@ public class JFKeyCommand implements CommandExecutor {
 
         FileConfiguration configuration = plugin.getConfig();
 
-        String messagesHelp = configuration.getString("messages.help");
+        String messagesHelp = configuration
+                .getString("messages.help");
 
         if (args.length == 0) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', messagesHelp));
+
+            sender.sendMessage(
+                    ChatColor.translateAlternateColorCodes('&',
+                            messagesHelp));
             return true;
         }
 
         SubCommand subCommand = getSubCommand(args[0]);
         if (subCommand == null) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', messagesHelp));
+
+            sender.sendMessage(
+                    ChatColor.translateAlternateColorCodes('&',
+                            messagesHelp));
             return true;
         }
 
         if (!sender.hasPermission(subCommand.getPermission())) {
-            String messagesNoPermission = configuration.getString("messages.no-permission");
-            messagesNoPermission = messagesNoPermission.replace("{permission}", subCommand.getPermission());
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', messagesNoPermission));
+            String messagesNoPermission = configuration
+                    .getString("messages.no-permission");
+            messagesNoPermission = messagesNoPermission
+                    .replace("{permission}", subCommand.getPermission());
+
+            sender.sendMessage(
+                    ChatColor.translateAlternateColorCodes('&',
+                            messagesNoPermission));
             return true;
         }
 

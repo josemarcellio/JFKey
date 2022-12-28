@@ -35,8 +35,13 @@ public class AddSubCommand extends SubCommand {
         Player player = (Player) sender;
 
         if (args.length < 2) {
-            String messagesInvalid = plugin.getConfig().getString("messages.invalid");
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', messagesInvalid));
+
+            String messagesInvalid = plugin.getConfig()
+                    .getString("messages.invalid");
+
+            player.sendMessage(
+                    ChatColor.translateAlternateColorCodes('&',
+                            messagesInvalid));
             return;
         }
         StringBuilder commandToAddBuilder = new StringBuilder(args[1]);
@@ -44,8 +49,16 @@ public class AddSubCommand extends SubCommand {
             commandToAddBuilder.append(" ").append(args[i]);
         }
         String commandToAdd = commandToAddBuilder.toString();
-        plugin.getCommandMap().put(player.getUniqueId(), commandToAdd);
-        String messagesAdded = plugin.getConfig().getString("messages.added");
-        player.sendMessage(ChatColor.translateAlternateColorCodes('&', messagesAdded.replace("{command}", commandToAdd)));
+
+        plugin.getCommandMap().put(
+                player.getUniqueId(), commandToAdd);
+
+        String messagesAdded = plugin.getConfig()
+                .getString("messages.added");
+
+        player.sendMessage(
+                ChatColor.translateAlternateColorCodes('&',
+                        messagesAdded.replace("{command}",
+                                commandToAdd)));
     }
 }

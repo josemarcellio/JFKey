@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 public class YamlDatabase implements DatabaseAPI {
+
     private final JFKey plugin;
     private File configFile;
     private YamlConfiguration config;
@@ -20,13 +21,15 @@ public class YamlDatabase implements DatabaseAPI {
 
     @Override
     public void setup() {
-        configFile = new File(plugin.getDataFolder(), "/data/playerdata.yml");
+        configFile = new File(plugin.getDataFolder(),
+                "/data/playerdata.yml");
         config = YamlConfiguration.loadConfiguration(configFile);
     }
 
     @Override
     public String getCommand(UUID playerId) {
-        String command = config.getString(playerId + ".command");
+        String command = config
+                .getString(playerId + ".command");
         if (command != null) {
             return command;
         } else {
@@ -41,7 +44,8 @@ public class YamlDatabase implements DatabaseAPI {
         try {
             config.save(configFile);
         } catch (IOException e) {
-            plugin.getLogger().severe("There is an error when trying to save playerdata: " + e.getMessage());
+            plugin.getLogger().severe(
+                    "Error saving player command to Yaml: " + e.getMessage());
         }
     }
 }

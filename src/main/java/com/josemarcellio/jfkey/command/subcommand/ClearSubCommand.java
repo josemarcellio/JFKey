@@ -34,14 +34,31 @@ public class ClearSubCommand extends SubCommand {
 
         Player player = (Player) sender;
 
-        if (plugin.getCommandMap().get(player.getUniqueId()) != null && !plugin.getCommandMap().get(player.getUniqueId()).equals("no_command_set")) {
-            String lastCommand = plugin.getCommandMap().get(player.getUniqueId());
-            String messagesClear = plugin.getConfig().getString("messages.clear");
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', messagesClear.replace("{command}", lastCommand)));
-            plugin.getCommandMap().put(player.getUniqueId(), "no_command_set");
+        if (plugin.getCommandMap()
+                .get(player.getUniqueId()) != null &&
+                !plugin.getCommandMap()
+                        .get(player.getUniqueId()).equals("no_command_set")) {
+
+            String lastCommand = plugin.getCommandMap()
+                    .get(player.getUniqueId());
+
+            String messagesClear = plugin.getConfig()
+                    .getString("messages.clear");
+
+            player.sendMessage(
+                    ChatColor.translateAlternateColorCodes('&',
+                            messagesClear.replace("{command}",
+                                    lastCommand)));
+
+            plugin.getCommandMap().put(
+                    player.getUniqueId(), "no_command_set");
         } else {
-            String messagesNoCommand = plugin.getConfig().getString("messages.no-command");
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', messagesNoCommand));
+            String messagesNoCommand = plugin.getConfig()
+                    .getString("messages.no-command");
+
+            player.sendMessage(
+                    ChatColor.translateAlternateColorCodes('&',
+                            messagesNoCommand));
         }
     }
 }
