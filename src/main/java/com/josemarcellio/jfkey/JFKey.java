@@ -11,7 +11,6 @@ import com.josemarcellio.jfkey.database.YamlDatabase;
 import com.josemarcellio.jfkey.database.MySQLDatabase;
 import com.josemarcellio.jfkey.listener.PlayerJoinQuitListener;
 import com.josemarcellio.jfkey.listener.PlayerSwapHandItemsListener;
-import com.josemarcellio.jfkey.metrics.Metrics;
 import com.josemarcellio.jfkey.softdepend.PlaceholderAPIHook;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -30,8 +29,6 @@ public class JFKey extends JavaPlugin {
 
     @Override
     public void onEnable() {
-
-        new Metrics(this, 17123);
 
         getLogger().info("JFKey by JoseMarcellio");
 
