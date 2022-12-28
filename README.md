@@ -1,0 +1,2 @@
+# JFKey
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/16f704cd291847e7b12dd5b9f34c572f)](https://app.codacy.com/gh/josemarcellio/JFKey?utm_source=github.com&utm_medium=referral&utm_content=josemarcellio/JFKey&utm_campaign=Badge_Grade_Settings)
